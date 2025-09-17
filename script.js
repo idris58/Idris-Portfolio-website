@@ -242,6 +242,36 @@ form.addEventListener("submit", function (e) {
     });
 });
 
+// ===== Mobile Menu Toggle =====
+const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+const navLinksMenu = document.querySelector('.nav-links');
+
+function handleResize() {
+  if (window.innerWidth <= 768) {
+    mobileMenuToggle.style.display = 'block';
+    navLinksMenu.classList.remove('show');
+  } else {
+    mobileMenuToggle.style.display = 'none';
+    navLinksMenu.classList.remove('show');
+    navLinksMenu.style.display = '';
+  }
+}
+
+window.addEventListener('resize', handleResize);
+window.addEventListener('DOMContentLoaded', handleResize);
+
+mobileMenuToggle.addEventListener('click', () => {
+  navLinksMenu.classList.toggle('show');
+});
+
+// Hide menu when a link is clicked (mobile only)
+navLinksMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth <= 768) {
+      navLinksMenu.classList.remove('show');
+    }
+  });
+});
 
 // ===== Dark/Light Theme Toggle =====
 const themeToggle = document.getElementById("themeToggle");
