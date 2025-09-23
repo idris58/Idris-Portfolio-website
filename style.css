@@ -411,7 +411,7 @@ html {
     margin: 10px 0;
   }
   .navbar {
-    position: relative;
+    position: fixed;
   }
   .navbar { padding:15px 20px;  }
   .section-box { padding:60px 10px;  }
