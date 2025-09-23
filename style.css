@@ -4,6 +4,7 @@ body {
   font-family:Poppins, sans-serif;
   color:#000; background:#fef7f7;
   scroll-behavior: smooth;
+  justify-content: center;
 }
 
 :root {
