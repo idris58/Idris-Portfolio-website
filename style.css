@@ -1160,3 +1160,48 @@ body.dark-mode .ri-whatsapp-line {
     font-size: 18px;
   }
 }
+
+/* Hamburger default hidden */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+/* Mobile menu hidden initially */
+.nav-links {
+  display: flex;
+  gap: 20px;
+  transition: max-height 0.3s ease-in-out;
+}
+
+/* For small screens */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 60px; /* below navbar */
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: var(--bg-color, #fff);
+    text-align: center;
+    max-height: 0; /* hidden */
+    overflow: hidden;
+    border-bottom: 2px solid crimson;
+    z-index: 999;
+  }
+
+  .nav-links.show {
+    max-height: 400px; /* enough space for links */
+  }
+
+  .nav-links li {
+    padding: 10px 0;
+  }
+}
+
