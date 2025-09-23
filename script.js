@@ -295,27 +295,3 @@ themeToggle.addEventListener("click", () => {
     localStorage.setItem("theme", "light");
   }
 });
-
-
-// Hamburger toggle
-const hamburger = document.getElementById("hamburger");
-const navLinks = document.querySelector(".nav-links");
-
-hamburger.addEventListener("click", () => {
-  navLinks.classList.toggle("show");
-
-  // Toggle icon
-  if (navLinks.classList.contains("show")) {
-    hamburger.innerHTML = '<i class="ri-close-line"></i>';
-  } else {
-    hamburger.innerHTML = '<i class="ri-menu-line"></i>';
-  }
-});
-
-// Close menu when clicking a link
-document.querySelectorAll(".nav-links a").forEach(link => {
-  link.addEventListener("click", () => {
-    navLinks.classList.remove("show");
-    hamburger.innerHTML = '<i class="ri-menu-line"></i>';
-  });
-});
