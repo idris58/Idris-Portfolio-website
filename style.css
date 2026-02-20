@@ -290,6 +290,9 @@ html, body {
 }
 .filter {
   font-weight:600; color:#000; cursor:pointer;
+  background: none;
+  border: none;
+  padding: 4px 6px;
 }
 .filter.active,
 .filter:hover { color:red; }
@@ -385,9 +388,9 @@ html, body {
   /* .nav-links will be toggled by JS for mobile menu */
   .mobile-menu-toggle {
     display: block;
-    position: right;
-    right: 20px;
-    top: 18px;
+    position: relative;
+    right: 0;
+    top: 0;
     font-size: 28px;
     background: none;
     border: none;

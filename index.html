@@ -27,7 +27,7 @@
       </ul>
     </nav>
     <div class="controls-wrapper">
-      <div class="theme-toggle" id="themeToggle"><i class="ri-sun-line"></i></div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><i class="ri-sun-line"></i></button>
       <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Open menu" style="display:none;">
         <i class="ri-menu-line"></i>
       </button>
@@ -179,13 +179,13 @@
     <h2 class="projects-title" data-aos="fade-up">PROJECTS</h2>
     <div class="projects-icon" data-aos="zoom-in"><i class="ri-code-s-slash-line"></i></div>
     <div class="project-filters" data-aos="fade-up">
-    <span class="filter active" data-filter="all">ALL</span>
-    <span class="filter" data-filter="csharp">C# / .NET</span>
-    <span class="filter" data-filter="java">Java</span>
-    <span class="filter" data-filter="graphics">Graphics</span>
-    <span class="filter" data-filter="python">Python / ML</span>
-    <span class="filter" data-filter="qa">QA / Docs</span>
-    <span class="filter" data-filter="web">Web Dev</span>
+    <button class="filter active" data-filter="all" aria-pressed="true">ALL</button>
+    <button class="filter" data-filter="csharp" aria-pressed="false">C# / .NET</button>
+    <button class="filter" data-filter="java" aria-pressed="false">Java</button>
+    <button class="filter" data-filter="graphics" aria-pressed="false">Graphics</button>
+    <button class="filter" data-filter="python" aria-pressed="false">Python / ML</button>
+    <button class="filter" data-filter="qa" aria-pressed="false">QA / Docs</button>
+    <button class="filter" data-filter="web" aria-pressed="false">Web Dev</button>
   </div>
 
     <div class="project-grid">
@@ -193,7 +193,7 @@
       <div class="project-card" data-category="csharp" data-aos="fade-up" data-aos-delay="100" 
       data-description="A complete travel agency system built with C# and Oracle. Features hotel, transport, and activity booking with admin management."
       data-images="projects/Home.jpg,projects/Login.jpg,projects/Activity.jpg">
-        <img src="projects/tripmaker.jpg" alt="TripMaker">
+        <img src="projects/tripmaker.jpg" alt="TripMaker" loading="lazy" decoding="async">
         <h3>TripMaker – Travel Agency Management System</h3>
         <div class="project-links">
           <a href="https://github.com/idris58/TripMaker-Travel-Agency-Management-System.git" target="_blank" rel="noopener noreferrer" class="btn github">GitHub</a>
@@ -203,7 +203,7 @@
 
       <!-- Library Management System -->
       <div class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="200">
-        <img src="projects/library.jpg" alt="Library Management System">
+        <img src="projects/library.jpg" alt="Library Management System" loading="lazy" decoding="async">
         <h3>Library Management System</h3>
         <div class="project-links">
           <a href="https://github.com/idris58/Library-Management-System.git" target="_blank" rel="noopener noreferrer" class="btn github">GitHub</a>
@@ -213,7 +213,7 @@
 
       <!-- Diagnostic Service Provider -->
       <div class="project-card" data-category="csharp" data-aos="fade-up" data-aos-delay="300">
-        <img src="projects/diagnostic.jpg" alt="Diagnostic Service Provider">
+        <img src="projects/diagnostic.jpg" alt="Diagnostic Service Provider" loading="lazy" decoding="async">
         <h3>Diagnostic Service Provider System</h3>
         <div class="project-links">
           <a href="https://github.com/idris58/Diagnostic-Sevice-Provider-System.git" target="_blank" rel="noopener noreferrer" class="btn github">GitHub</a>
@@ -223,7 +223,7 @@
 
       <!-- Food Court Management System -->
       <div class="project-card" data-category="java" data-aos="fade-up" data-aos-delay="400">
-        <img src="projects/foodcourt.webp" alt="Food Court System">
+        <img src="projects/foodcourt.webp" alt="Food Court System" loading="lazy" decoding="async">
         <h3>Food Court Management System</h3>
         <div class="project-links">
           <a href="https://github.com/idris58/Food-Court-Management-System.git" target="_blank" rel="noopener noreferrer" class="btn github">GitHub</a>
@@ -233,7 +233,7 @@
 
       <!-- Word Ladder Game -->
       <div class="project-card" data-category="python" data-aos="fade-up" data-aos-delay="500">
-        <img src="projects/wordladder.png" alt="Word Ladder Game">
+        <img src="projects/wordladder.png" alt="Word Ladder Game" loading="lazy" decoding="async">
         <h3>Word Ladder Game</h3>
         <div class="project-links">
           <a href="https://github.com/idris58/Python_Project_World_Ladder_Game.git" target="_blank" rel="noopener noreferrer" class="btn github">GitHub</a>
@@ -243,7 +243,7 @@
 
       <!-- Road Master Car Racing -->
       <div class="project-card" data-category="graphics cpp" data-aos="fade-up" data-aos-delay="600">
-        <img src="projects/roadmaster.jpg" alt="Road Master">
+        <img src="projects/roadmaster.jpg" alt="Road Master" loading="lazy" decoding="async">
         <h3>Road Master Car Racing</h3>
         <div class="project-links">
           <a href="https://github.com/idris58/Computer-Graphics-Project-Road-Master-Car-Racing-Game.git" target="_blank" rel="noopener noreferrer" class="btn github">GitHub</a>
@@ -253,7 +253,7 @@
 
       <!-- TripMaker Test Plan -->
       <div class="project-card" data-category="qa" data-aos="fade-up" data-aos-delay="700">
-        <img src="projects/testplan.png" alt="TripMaker QA">
+        <img src="projects/testplan.png" alt="TripMaker QA" loading="lazy" decoding="async">
         <h3>TripMaker – QA & Test Plan</h3>
         <div class="project-links">
           <a href="https://github.com/idris58/TripMaker-Travel-Agency-Management-System-Test-Plan" target="_blank" rel="noopener noreferrer" class="btn github">GitHub</a>
@@ -264,7 +264,7 @@
       <!-- Heart Attack Prediction -->
       <div class="project-card" data-category="python" data-aos="fade-up" data-aos-delay="800" 
       data-description="A machine learning project predicting heart attack risk using the Logistic Regression and Naive Bayes algorithm. Utilizes patient data to classify risk levels, aiding early intervention and healthcare decisions.">
-        <img src="projects/heartattack.webp" alt="Heart Attack Prediction">
+        <img src="projects/heartattack.webp" alt="Heart Attack Prediction" loading="lazy" decoding="async">
         <h3>Heart Attack Prediction (ML)</h3>
         <div class="project-links">
           <a href="https://github.com/idris58/ML-Related-Work/blob/main/Heart_Attack_Prediction_using_Naive_Bayes.ipynb" target="_blank" rel="noopener noreferrer" class="btn github">GitHub</a>
@@ -274,7 +274,7 @@
 
       <!-- Plant Disease Classification -->
       <div class="project-card" data-category="python" data-aos="fade-up" data-aos-delay="900">
-        <img src="projects/plantdisease.jpg" alt="Plant Disease Classification">
+        <img src="projects/plantdisease.jpg" alt="Plant Disease Classification" loading="lazy" decoding="async">
         <h3>Plant Disease Classification (DL)</h3>
         <div class="project-links">
           <a href="https://github.com/idris58/ML-Related-Work/blob/main/Plant_Disease_Detection_V3_ML_Code_Implementation.ipynb" target="_blank" rel="noopener noreferrer" class="btn github">GitHub</a>
@@ -285,9 +285,9 @@
   </section>
 
   <!-- Project Details Modal -->
-  <div id="projectModal" class="modal">
+  <div id="projectModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-content">
-      <span class="close-btn">&times;</span>
+      <button class="close-btn" type="button" aria-label="Close project details">&times;</button>
       <h2 id="modalTitle"></h2>
       <p id="modalDescription"></p>
       <div class="modal-images" id="modalImages"></div>
@@ -298,11 +298,11 @@
   </div>
 
   <!-- Lightbox for full-size images -->
-  <div id="lightbox" class="lightbox">
-    <span class="lightbox-close">&times;</span>
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox-close" type="button" aria-label="Close image viewer">&times;</button>
     <img id="lightbox-img" src="" alt="Full view" />
-    <a class="lightbox-prev">&#10094;</a>
-    <a class="lightbox-next">&#10095;</a>
+    <button class="lightbox-prev" type="button" aria-label="Previous image">&#10094;</button>
+    <button class="lightbox-next" type="button" aria-label="Next image">&#10095;</button>
   </div>
 
 
@@ -316,7 +316,7 @@
     <div class="awards-grid">
       <!-- Cisco IT Essentials -->
       <div class="award-card" data-aos="fade-up" data-aos-delay="100">
-        <img src="awards/ITE.png" alt="Cisco IT Essentials" />
+        <img src="awards/ITE.png" alt="Cisco IT Essentials" loading="lazy" decoding="async" />
         <h3>Cisco – IT Essentials</h3>
         <div class="award-buttons">
           <a href="assets/cisco_certificate.pdf" class="btn btn-show">Show</a>
@@ -325,7 +325,7 @@
 
       <!-- Accenture Digital Skills: UX -->
       <div class="award-card" data-aos="fade-up" data-aos-delay="200">
-        <img src="awards/accenture.jpg" alt="Accenture Digital Skills" />
+        <img src="awards/accenture.jpg" alt="Accenture Digital Skills" loading="lazy" decoding="async" />
         <h3>Accenture – Digital Skills: User Experience</h3>
         <div class="award-buttons">
           <a href="assets/accenture_certificate.pdf" class="btn btn-show">Show</a>
@@ -334,7 +334,7 @@
 
       <!-- Workshop: UI/UX Design -->
       <div class="award-card" data-aos="fade-up" data-aos-delay="300">
-        <img src="awards/UnlockingResearch.jpg" alt="Unlocking Research" />
+        <img src="awards/UnlockingResearch.jpg" alt="Unlocking Research" loading="lazy" decoding="async" />
         <h3>Webinar – Unlocking Research: A Beginner’s Blueprint</h3>
         <div class="award-buttons">
           <a href="assets/Unlocking Research.png" class="btn btn-show">Show</a>
@@ -344,12 +344,12 @@
   </section>
 
   <!-- Certificate Modal -->
-  <div id="certificateModal" class="modal">
+  <div id="certificateModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="certTitle">
     <div class="modal-content cert-modal">
-      <span class="close-cert">&times;</span>
+      <button class="close-cert" type="button" aria-label="Close certificate viewer">&times;</button>
       <h2 id="certTitle"></h2>
       <!-- PDF Viewer -->
-      <iframe id="certFrame" src="" frameborder="0"></iframe>
+      <iframe id="certFrame" src="" frameborder="0" title="Certificate document"></iframe>
       <!-- Image Viewer -->
       <img id="certImage" src="" alt="Certificate Image" />
     </div>

@@ -33,6 +33,8 @@ document.querySelectorAll('.filter').forEach(filter => {
   filter.addEventListener('click', function(){
     document.querySelector('.filter.active').classList.remove('active');
     this.classList.add('active');
+    document.querySelectorAll('.filter').forEach(btn => btn.setAttribute('aria-pressed', 'false'));
+    this.setAttribute('aria-pressed', 'true');
     const cat = this.dataset.filter;
     document.querySelectorAll('.project-card').forEach(card => {
       card.style.display = (cat==='all' || card.dataset.category.includes(cat)) ? 'block' : 'none';
@@ -44,6 +46,53 @@ document.querySelectorAll('.filter').forEach(filter => {
 // ========== Project Modal ==========
 const modal = document.getElementById("projectModal");
 const closeBtn = document.querySelector(".close-btn");
+let lastFocusedElement = null;
+
+function getFocusableElements(container) {
+  return Array.from(
+    container.querySelectorAll(
+      'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    )
+  );
+}
+
+function trapFocus(container) {
+  const focusable = getFocusableElements(container);
+  if (focusable.length === 0) return;
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+
+  container.addEventListener("keydown", function (e) {
+    if (e.key !== "Tab") return;
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  });
+}
+
+function openModalFocus(container) {
+  lastFocusedElement = document.activeElement;
+  trapFocus(container);
+  const focusable = getFocusableElements(container);
+  if (focusable.length > 0) {
+    focusable[0].focus();
+  } else {
+    container.setAttribute("tabindex", "-1");
+    container.focus();
+  }
+}
+
+function closeModalFocus(container) {
+  container.removeAttribute("tabindex");
+  if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+    lastFocusedElement.focus();
+  }
+  lastFocusedElement = null;
+}
 
 // Lightbox
 const lightbox = document.getElementById("lightbox");
@@ -88,13 +137,20 @@ document.querySelectorAll(".project-card .details").forEach((btn) => {
     });
 
     modal.style.display = "block";
+    openModalFocus(modal);
   });
 });
 
 // Close modal
-closeBtn.addEventListener("click", () => (modal.style.display = "none"));
+closeBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+  closeModalFocus(modal);
+});
 window.addEventListener("click", (e) => {
-  if (e.target == modal) modal.style.display = "none";
+  if (e.target == modal) {
+    modal.style.display = "none";
+    closeModalFocus(modal);
+  }
 });
 
 // ========== Lightbox ==========
@@ -103,6 +159,7 @@ function openLightbox(images, index) {
   currentImageIndex = index;
   lightbox.style.display = "flex";
   updateLightbox();
+  openModalFocus(lightbox);
 }
 
 function updateLightbox() {
@@ -120,9 +177,15 @@ lightboxNext.addEventListener("click", () => {
 });
 
 // Close
-lightboxClose.addEventListener("click", () => lightbox.style.display = "none");
+lightboxClose.addEventListener("click", () => {
+  lightbox.style.display = "none";
+  closeModalFocus(lightbox);
+});
 window.addEventListener("click", (e) => {
-  if (e.target == lightbox) lightbox.style.display = "none";
+  if (e.target == lightbox) {
+    lightbox.style.display = "none";
+    closeModalFocus(lightbox);
+  }
 });
 
 // Keyboard navigation
@@ -174,6 +237,7 @@ document.querySelectorAll(".award-card .btn-show").forEach((btn) => {
     }
 
     certModal.style.display = "block";
+    openModalFocus(certModal);
   });
 });
 
@@ -182,6 +246,7 @@ closeCert.addEventListener("click", () => {
   certModal.style.display = "none";
   certFrame.src = "";
   certImage.src = "";
+  closeModalFocus(certModal);
 });
 
 window.addEventListener("click", (e) => {
@@ -189,6 +254,7 @@ window.addEventListener("click", (e) => {
     certModal.style.display = "none";
     certFrame.src = "";
     certImage.src = "";
+    closeModalFocus(certModal);
   }
 });
 
@@ -284,7 +350,7 @@ if (localStorage.getItem("theme") === "dark") {
 }
 
 // Toggle theme on click
-themeToggle.addEventListener("click", () => {
+function toggleTheme() {
   body.classList.toggle("dark-mode");
 
   if (body.classList.contains("dark-mode")) {
@@ -293,5 +359,13 @@ themeToggle.addEventListener("click", () => {
   } else {
     themeToggle.innerHTML = '<i class="ri-sun-line"></i>'; // sun icon for light mode
     localStorage.setItem("theme", "light");
+  }
+}
+
+themeToggle.addEventListener("click", toggleTheme);
+themeToggle.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" || e.key === " ") {
+    e.preventDefault();
+    toggleTheme();
   }
 });
