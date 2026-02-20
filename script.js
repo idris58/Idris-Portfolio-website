@@ -212,6 +212,7 @@ form.addEventListener("submit", function (e) {
       statusMsg.textContent = "Message sent successfully!";
       statusMsg.classList.add("success");
       statusMsg.style.display = "block";
+      form.reset();
 
       // Auto fade out after 6s
       setTimeout(() => {
@@ -238,7 +239,6 @@ form.addEventListener("submit", function (e) {
     })
     .finally(() => {
       spinner.style.display = "none";
-      form.reset();
     });
 });
 
