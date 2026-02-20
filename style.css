@@ -9,6 +9,9 @@ body {
 :root {
   --main-color: #38f858;
   --bg-color: #0e0e0e;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --dur-fast: 180ms;
+  --dur-normal: 280ms;
 }
 
 html {
@@ -53,7 +56,7 @@ html, body {
   color:rgb(255, 255, 7); 
   cursor:pointer;
   font-weight: 500;
-  transition:transform .3s;
+  transition: transform var(--dur-normal) var(--ease-standard);
   background: transparent;
   border: none;
   line-height: 1;
@@ -91,7 +94,7 @@ html, body {
 .social-icons { margin:24px 0; }
 .social-icons a {
   color:#14495f; font-size:28px; margin-right:10px;
-  transition:transform .3s;
+  transition: transform var(--dur-normal) var(--ease-standard);
 }
 .social-icons a:hover { transform:scale(1.2); }
 .profile-views { color:#666; font-size:14px; }
@@ -162,7 +165,10 @@ html, body {
 }
 .tech-circle img {
   width:60px;height:60px;
-  filter:grayscale(100%); transition:filter .3s,transform .3s;
+  filter:grayscale(100%);
+  transition:
+    filter var(--dur-normal) var(--ease-standard),
+    transform var(--dur-normal) var(--ease-standard);
 }
 .tech-circle img:hover {
   filter:grayscale(0); transform:scale(1.1);
@@ -222,7 +228,7 @@ html, body {
 .skill-card {
   background:white; padding:20px;
   border-radius:12px; text-align:center;
-  transition:transform .3s;
+  transition: transform var(--dur-normal) var(--ease-standard);
 }
 .skill-card i {
   font-size: 48px;   /* icon size */
@@ -262,7 +268,8 @@ html, body {
 }
 .expertise-card {
   background:white; padding:30px; border-radius:12px;
-  text-align:center; transition:transform .3s;
+  text-align:center;
+  transition: transform var(--dur-normal) var(--ease-standard);
 }
 .expertise-card i {
   font-size: 50px;
@@ -307,7 +314,7 @@ html, body {
 .project-card {
   background:white; padding:20px;
   text-align:center; border-radius:12px;
-  transition:transform .3s;
+  transition: transform var(--dur-normal) var(--ease-standard);
 }
 .project-card:hover { transform:translateY(-5px); }
 .project-card img {
@@ -485,7 +492,9 @@ html, body {
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.25s ease;
+  transition:
+    transform var(--dur-normal) var(--ease-standard),
+    box-shadow var(--dur-fast) var(--ease-standard);
   text-align: center;
 }
 .award-card:hover {
@@ -513,7 +522,7 @@ html, body {
   background: #2563eb;
   color: #fff;
   text-decoration: none;
-  transition: background 0.25s ease;
+  transition: background var(--dur-fast) var(--ease-standard);
 }
 
 .award-card .btn-show:hover {
@@ -646,7 +655,7 @@ html, body {
   font-size: 14px;
   border-radius: 6px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background var(--dur-normal) var(--ease-standard);
 }
 .btn-contact:hover {
   background: #1e40af;
@@ -696,7 +705,7 @@ html, body {
   max-width: 900px;
   color: #f5f5f5;
   box-shadow: var(--shadow);
-  animation: fadeIn 0.3s ease;
+  animation: fadeIn var(--dur-normal) var(--ease-standard);
 }
 
 .close-btn {
@@ -731,7 +740,9 @@ html, body {
   width: 100%;
   height: auto;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform var(--dur-fast) var(--ease-standard),
+    box-shadow var(--dur-fast) var(--ease-standard);
 }
 
 .modal-images img.thumbnail:hover {
@@ -838,7 +849,7 @@ html, body {
   max-width: 900px;
   color: #f5f5f5;
   box-shadow: var(--shadow);
-  animation: fadeIn 0.3s ease;
+  animation: fadeIn var(--dur-normal) var(--ease-standard);
 }
 .cert-modal h2 {
   margin-bottom: 10px;
@@ -916,6 +927,21 @@ html, body {
 
 .form-status.fade-out {
   animation: fadeOut 1s forwards;
+}
+
+/* Respect reduced-motion users while keeping the profile ring behavior unchanged */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+  .home-img .img-box::before,
+  .home-img .img-box::after {
+    animation: rotate-border 10s linear infinite !important;
+  }
 }
 
 /* Dark Mode Styles */
