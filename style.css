@@ -54,6 +54,9 @@ html, body {
   cursor:pointer;
   font-weight: 500;
   transition:transform .3s;
+  background: transparent;
+  border: none;
+  line-height: 1;
 }
 .theme-toggle:hover { 
   transform:rotate(-40deg); 
@@ -701,6 +704,9 @@ html, body {
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
+  background: transparent;
+  border: none;
+  color: #f5f5f5;
 }
 
 .close-btn:hover {
@@ -785,6 +791,8 @@ html, body {
   font-size: 40px;
   color: white;
   cursor: pointer;
+  background: transparent;
+  border: none;
 }
 
 .lightbox-prev, .lightbox-next {
@@ -796,6 +804,8 @@ html, body {
   padding: 12px;
   margin-top: -20px;
   user-select: none;
+  background: transparent;
+  border: none;
 }
 
 .lightbox-prev { left: 20px; }
@@ -856,6 +866,8 @@ html, body {
   font-weight: bold;
   cursor: pointer;
   color: #fff;
+  background: transparent;
+  border: none;
 }
 
 .close-cert:hover {
@@ -915,6 +927,12 @@ body.dark-mode {
 body.dark-mode .navbar {
   background: #1f1f1f;
 }
+body.dark-mode .mobile-menu-toggle {
+  color: #f0f0f0;
+}
+body.dark-mode .nav-links {
+  background: #1f1f1f;
+}
 
 body.dark-mode .section-box {
   background: #1c1c1c;
@@ -962,6 +980,10 @@ body.dark-mode .contact-form textarea {
 body.dark-mode .contact-form input::placeholder,
 body.dark-mode .contact-form textarea::placeholder {
   color: #bbb;
+}
+body.dark-mode .contact-info i {
+  background: #2c2c2c;
+  color: #f0f0f0;
 }
 body.dark-mode .footer {
   background-color: #1f2937;
