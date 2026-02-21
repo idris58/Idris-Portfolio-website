@@ -47,6 +47,7 @@ document.querySelectorAll('.filter').forEach(filter => {
 const modal = document.getElementById("projectModal");
 const closeBtn = document.querySelector(".close-btn");
 let lastFocusedElement = null;
+const focusTrapHandlers = new WeakMap();
 
 function getFocusableElements(container) {
   return Array.from(
@@ -57,13 +58,15 @@ function getFocusableElements(container) {
 }
 
 function trapFocus(container) {
-  const focusable = getFocusableElements(container);
-  if (focusable.length === 0) return;
-  const first = focusable[0];
-  const last = focusable[focusable.length - 1];
+  if (focusTrapHandlers.has(container)) return;
 
-  container.addEventListener("keydown", function (e) {
+  const handler = function (e) {
     if (e.key !== "Tab") return;
+    const focusable = getFocusableElements(container);
+    if (focusable.length === 0) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
     if (e.shiftKey && document.activeElement === first) {
       e.preventDefault();
       last.focus();
@@ -71,7 +74,10 @@ function trapFocus(container) {
       e.preventDefault();
       first.focus();
     }
-  });
+  };
+
+  container.addEventListener("keydown", handler);
+  focusTrapHandlers.set(container, handler);
 }
 
 function openModalFocus(container) {
@@ -199,6 +205,7 @@ window.addEventListener("keydown", (e) => {
       updateLightbox();
     } else if (e.key === "Escape") {
       lightbox.style.display = "none";
+      closeModalFocus(lightbox);
     }
   }
 });
